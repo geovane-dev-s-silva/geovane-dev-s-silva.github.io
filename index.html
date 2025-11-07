@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geovane Silva | Data Scientist</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4712/4712027.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Orbitron:wght@500;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Fira Code', monospace;
+      background: radial-gradient(circle at top left, #020202, #0a0a0a);
+      color: #e0e0e0;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 20px;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5em;
+      color: #00ff88;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px #00ff88;
+      animation: glow 3s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #00ff88; }
+      to { text-shadow: 0 0 20px #00ffcc; }
+    }
+
+    header p {
+      color: #ccc;
+      font-size: 1.1em;
+      margin-top: 10px;
+    }
+
+    section {
+      padding: 60px 10%;
+    }
+
+    .highlight {
+      color: #00ff88;
+    }
+
+    .about, .skills, .projects, .contact {
+      margin-bottom: 80px;
+    }
+
+    .skills-icons img {
+      height: 50px;
+      width: 50px;
+      margin: 10px;
+      filter: drop-shadow(0 0 4px #00ff88);
+      transition: transform 0.3s;
+    }
+
+    .skills-icons img:hover {
+      transform: scale(1.15);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 0 10px #00ff8844;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px #00ff8888;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      font-size: 0.9em;
+      color: #888;
+      border-top: 1px solid #111;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0 10px;
+      transition: transform 0.3s;
+    }
+
+    .social-links a:hover {
+      transform: scale(1.15);
+    }
+
+    .tagline {
+      color: #00ff88;
+      font-family: 'Orbitron';
+      font-size: 1.2em;
+      text-shadow: 0 0 8px #00ff88;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>🚀 Geovane Silva</h1>
+    <p class="tagline">Cientista de Dados | Explorador de Inteligência Artificial</p>
+  </header>
+
+  <section class="about">
+    <h2>👾 Sobre Mim</h2>
+    <p>Sou um <span class="highlight">Cientista de Dados</span> apaixonado por código, aprendizado de máquina e inovação. Acredito que tecnologia é a ponte entre o presente e o futuro — e eu gosto de estar no meio dessa travessia.</p>
+    <p>Com foco em IA, automação e soluções de dados, busco sempre transformar ideias em sistemas funcionais e inteligentes.</p>
+  </section>
+
+  <section class="skills">
+    <h2>🧠 Habilidades</h2>
+    <div class="skills-icons" align="center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" title="Python" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" title="JavaScript" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" title="PHP" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" title="HTML5" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" title="CSS3" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" title="MySQL" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" title="Git" />
+    </div>
+  </section>
+
+  <section class="projects">
+    <h2>🌌 Projetos em Destaque</h2>
+    <div class="projects-grid">
+      <div class="card">
+        <h3>Sistema de Login PHP</h3>
+        <p>Autenticação segura com PHP e MySQL, ideal para aplicações web de pequeno e médio porte.</p>
+        <a href="https://github.com/geovane-dev-s-silva/sistema-login-php" target="_blank" class="highlight">Ver projeto →</a>
+      </div>
+      <div class="card">
+        <h3>Gerador de QR Code</h3>
+        <p>Ferramenta prática para gerar QR Codes dinâmicos com interface intuitiva.</p>
+        <a href="https://github.com/geovane-dev-s-silva/gerador-qr-code" target="_blank" class="highlight">Ver projeto →</a>
+      </div>
+      <div class="card">
+        <h3>Agentes Autônomos de IA</h3>
+        <p>Exploração de arquiteturas multiagente e integração com LLMs, LangChain e APIs externas.</p>
+        <a href="https://github.com/geovane-dev-s-silva/projeto-ia" target="_blank" class="highlight">Ver projeto →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" align="center">
+    <h2>🔗 Conecte-se Comigo</h2>
+    <p>Vamos construir algo épico juntos?</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/geovane-silva" target="_blank">
+        <img src="https://img.shields.io/badge/LinkedIn-00ff88?style=for-the-badge&logo=linkedin&logoColor=black">
+      </a>
+      <a href="mailto:geovane.dev.silva@gmail.com" target="_blank">
+        <img src="https://img.shields.io/badge/Gmail-00ff88?style=for-the-badge&logo=gmail&logoColor=black">
+      </a>
+      <a href="https://x.com/SSilvaGeovane" target="_blank">
+        <img src="https://img.shields.io/badge/Twitter-00ff88?style=for-the-badge&logo=twitter&logoColor=black">
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Geovane Silva — inspirado pela estética Cyberpunk & IA</p>
+  </footer>
+</body>
+</html>
