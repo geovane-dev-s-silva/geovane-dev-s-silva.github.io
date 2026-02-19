@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Simulação Caixa GV + GP</title>
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#0f172a;
+    color:white;
+    text-align:center;
+}
+.container{
+    margin-top:20px;
+}
+svg{
+    background:#1e293b;
+    border-radius:12px;
+}
+button{
+    margin:5px;
+    padding:8px 14px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
+.controls{
+    margin-top:15px;
+}
+.status{
+    margin-top:10px;
+    font-size:14px;
+}
+</style>
+</head>
+<body>
+
+<h2>Simulação Didática – Caixa com GV e GP</h2>
+
+<div class="container">
+<svg width="700" height="350">
+
+<!-- Entrada -->
+<circle id="entrada" cx="100" cy="175" r="40" stroke="white" stroke-width="3" fill="#3b82f6"/>
+<text x="70" y="180">Entrada</text>
+
+<!-- Engrenagem Intermediária -->
+<circle id="intermediaria" cx="250" cy="175" r="60" stroke="white" stroke-width="3" fill="#22c55e"/>
+<text x="205" y="180">GV</text>
+
+<!-- Grupo Planetário -->
+<circle id="solar" cx="450" cy="175" r="30" stroke="white" stroke-width="3" fill="#f59e0b"/>
+<circle id="anelar" cx="450" cy="175" r="80" stroke="white" stroke-width="2" fill="none"/>
+<text x="420" y="90">GP</text>
+
+<!-- Saída -->
+<circle id="saida" cx="630" cy="175" r="40" stroke="white" stroke-width="3" fill="#ef4444"/>
+<text x="600" y="180">Saída</text>
+
+</svg>
+</div>
+
+<div class="controls">
+<button onclick="toggleRun()">▶️ Iniciar / Pausar</button>
+<button onclick="toggleGV()">Alternar GV</button>
+<button onclick="toggleGP()">Alternar GP</button>
+</div>
+
+<div class="status">
+<div id="gvStatus">GV: Simples</div>
+<div id="gpStatus">GP: Direto</div>
+<div id="info"></div>
+</div>
+
+<script>
+
+let running = false;
+let angleEntrada = 0;
+let angleInter = 0;
+let angleSolar = 0;
+let angleSaida = 0;
+
+let gvMode = "simples";     // simples ou reduzido
+let gpMode = "direto";      // direto ou reduzido
+
+function toggleRun(){
+    running = !running;
+}
+
+function toggleGV(){
+    gvMode = gvMode === "simples" ? "reduzido" : "simples";
+    document.getElementById("gvStatus").innerText = 
+        "GV: " + (gvMode === "simples" ? "Simples" : "Reduzido (mais torque)");
+}
+
+function toggleGP(){
+    gpMode = gpMode === "direto" ? "reduzido" : "direto";
+    document.getElementById("gpStatus").innerText = 
+        "GP: " + (gpMode === "direto" ? "Direto" : "Redução Planetária");
+}
+
+function animate(){
+    if(running){
+
+        // Entrada sempre velocidade base
+        let velocidadeEntrada = 2;
+
+        // GV influencia a intermediária
+        let fatorGV = gvMode === "simples" ? 1 : 0.6;
+
+        // GP influencia saída
+        let fatorGP = gpMode === "direto" ? 1 : 0.5;
+
+        angleEntrada += velocidadeEntrada;
+        angleInter += velocidadeEntrada * fatorGV;
+        angleSolar += velocidadeEntrada * fatorGV;
+        angleSaida += velocidadeEntrada * fatorGV * fatorGP;
+
+        document.getElementById("entrada")
+            .setAttribute("transform","rotate("+angleEntrada+" 100 175)");
+        document.getElementById("intermediaria")
+            .setAttribute("transform","rotate("+angleInter+" 250 175)");
+        document.getElementById("solar")
+            .setAttribute("transform","rotate("+angleSolar+" 450 175)");
+        document.getElementById("anelar")
+            .setAttribute("transform",
+                gpMode==="reduzido"?
+                "rotate(0 450 175)" :
+                "rotate("+angleSolar+" 450 175)");
+
+        document.getElementById("saida")
+            .setAttribute("transform","rotate("+angleSaida+" 630 175)");
+
+        document.getElementById("info").innerHTML =
+            "Entrada: rotação constante<br>" +
+            "Saída: rotação " + 
+            (fatorGV*fatorGP < 1 ? "reduzida (mais torque)" : "direta");
+    }
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+</script>
+
+</body>
+</html>
